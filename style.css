@@ -1,350 +1,126 @@
-/* style.css */
-body, html {
+/* style.css - Simplified */
+
+/* Global */
+html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     color: #333;
     background: #f9f9f9;
+    scroll-behavior: smooth;
   }
   
-  nav {
-    background-color: #004080;
-    overflow: hidden;
-  }
-  
-  .nav-container {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-  }
-  
-  .nav-container a, .dropbtn {
-    color: white;
-    padding: 0.75rem 1rem;
-    text-decoration: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .dropdown {
-    position: relative;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content a {
-    color: #004080;
-    padding: 0.75rem 1rem;
-    display: block;
-    text-decoration: none;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #ddd;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  header {
-    background: #035ab7;
-    color: white;
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  footer {
-    background: #035ab7;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  .parallax {
-    background-image: url('images/hero.jpg');
-    height: 100vh;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
-  
-  .overlay {
-    background-color: rgba(0,0,0,0.5);
-    height: 100%;
-    color: white;
-    padding: 3rem;
-  }
-  
-  .signup form {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin: auto;
-  }
-  
-  .signup input, .signup textarea {
-    margin: 0.5rem 0;
-    padding: 0.75rem;
-    font-size: 1rem;
-  }
-  
-  .signup button {
-    padding: 0.75rem;
-    background: #035ab7;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .signup button:hover {
-    background: #0066cc;
-  }
-  
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    padding: 2rem;
-  }
-  
-  .photo-grid img {
-    width: 100%;
-    border-radius: 8px;
-  }
-  
-  .videos {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 2rem;
-    align-items: center;
-  }
-  @media screen and (max-width: 768px) {
-    .nav-container {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .dropdown-content {
-      position: static;
-      width: 100%;
-    }
-    .dropdown-content a {
-      padding: 0.5rem 1rem;
-    }
-  }
-@media screen and (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .dropdown-content {
-    position: static;
-    width: 100%;
-  }
-  .dropdown-content a {
-    padding: 0.5rem 1rem;
-  }
-  .nav-logo {
-    max-width: 180px;
-  }
-}
-
-body {
-  scroll-behavior: smooth;
-}
-
-#navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: white;
-  transition: box-shadow 0.3s ease;
-}
-
-#navbar.scrolled {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.nav-logo {
-  max-height: 50px;
-  vertical-align: middle;
-  transition: transform 0.3s ease;
-}
-
-.nav-logo:hover {
-  transform: scale(1.05);
-}
-
-.main-logo {
-  max-width: 300px;
-  height: auto;
-  opacity: 0;
-}
-
-.tagline {
-  font-size: 1.2rem;
-  opacity: 0;
-}
-
-.signup-heading {
-  opacity: 0;
-}
-
-.scroll-fade {
-  opacity: 0;
-  transform: translateY(50px);
-}
-
-/* Dropdown animation */
-.dropdown-content {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-}
-
-.dropdown:hover .dropdown-content {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-/* Preloader */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.loader-logo {
-  max-width: 120px;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.8; }
-}
-.nav-buttons {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .nav-icon {
-    max-height: 40px;
-    width: auto;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .nav-icon:hover {
-    transform: scale(1.05);
-  }
-  /* Sticky/Floating Navbar */
-.sticky-navbar {
+  /* Navbar */
+  #navbar {
     position: sticky;
     top: 0;
-    background-color: rgba(255, 255, 255, 0.95);
-    z-index: 999;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(6px);
-  }
-  
-  .nav-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0.5rem 1rem;
+    z-index: 1000;
   }
-  
   .nav-logo {
     height: 50px;
   }
-  
   .nav-buttons {
     display: flex;
     gap: 1rem;
-    align-items: center;
   }
-  
-  /* Image Buttons */
   .nav-icon {
     height: 40px;
-    width: auto;
-    transition: transform 0.3s ease, opacity 0.3s ease;
     cursor: pointer;
+    transition: transform 0.3s ease;
   }
-  
   .nav-icon:hover {
-    transform: scale(1.08);
-    opacity: 0.85;
-  }.scrolling-background {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    z-index: -1;
-    background: #111;
+    transform: scale(1.05);
   }
   
-  .scrolling-background img {
-    position: absolute;
-    opacity: 0.1;
-    filter: blur(3px);
-    object-fit: cover;
-    pointer-events: none;
-    animation: scrollImage 60s linear infinite;
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(to bottom right, #fff, #f0f0f0);
+  }
+  .main-logo {
+    max-width: 480px;
+    margin-bottom: 0.5rem;
+  }
+  .tagline {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #666;
   }
   
-  @keyframes scrollImage {
-    from {
-      transform: translateY(0) scale(1.05);
-    }
-    to {
-      transform: translateY(-120%) scale(1.1);
-    }
+  /* Big Logo */
+  .big-logo-container {
+    text-align: center;
+    padding: 1rem 0;
   }
-  .background-collage {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    gap: 8px;
-    padding: 2rem;
-    background-color: #000;
-    opacity: 0.2;
-    filter: blur(3px);
+  .big-logo {
+    max-width: 360px;
+    width: 80%;
   }
   
-  .background-collage img {
-    width: 150px;
-    height: 100px;
-    object-fit: cover;
+  /* Button Grid */
+  .button-grid {
+    display: grid;
+    align-items: start;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 1rem auto;
+    padding: 0 1rem;
+    justify-items: center;
+  }
+  .grid-button {
+    background: #fff;
     border-radius: 8px;
-    opacity: 0.9;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: #333;
+    overflow: hidden;
+    width: 100%;
+    max-width: 280px;
+    transition: transform 0.3s ease;
   }
-    
+  .grid-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 160px;
+  }
+  .grid-button img,
+  .placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .placeholder {
+    background: #e0e0e0;
+    display: none;
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #222;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .main-logo { max-width: 180px; }
+    .big-logo { max-width: 260px; }
+    .image-wrapper { height: 120px; }
+    .tagline { font-size: 1rem; }
+  }
+  
