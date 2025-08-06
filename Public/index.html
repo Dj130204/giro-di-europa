@@ -1,11 +1,10 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Giro di Europa</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <!-- GSAP Animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
@@ -25,44 +24,82 @@
           }
         });
       });
+
+      // Check login status and update nav
+      fetch('/auth/user')
+        .then(res => res.ok ? res.json() : Promise.reject())
+        .then(user => {
+          const nav = document.querySelector('.nav-buttons');
+          const welcome = document.createElement('span');
+          welcome.textContent = `Welcome, ${user.username}`;
+          welcome.className = 'nav-welcome';
+          nav.prepend(welcome);
+          const loginLink = nav.querySelector('a.login-link');
+          if (loginLink) {
+            loginLink.textContent = 'Logout';
+            loginLink.href = '#';
+            loginLink.addEventListener('click', e => {
+              e.preventDefault();
+              fetch('/auth/logout', { method: 'POST' })
+                .then(() => location.reload());
+            });
+          }
+        })
+        .catch(() => {});
+
+      // Guard member area link
+      const memberLink = document.querySelector('.member-link');
+      if (memberLink) {
+        memberLink.addEventListener('click', e => {
+          e.preventDefault();
+          fetch('/auth/user')
+            .then(res => {
+              if (res.ok) window.location.href = '/member.html';
+              else window.location.href = '/login.html';
+            });
+        });
+      }
     });
   </script>
 </head>
 <body>
   <!-- Navigation Bar -->
   <nav id="navbar">
-    <a href="index.html">
-      <img src="assets/GIRO D'EUROPA LOGO BLANK.png" alt="Logo" class="nav-logo">
+    <a href="/index.html">
+      <img src="/assets/GIRO24.png" alt="Logo" class="nav-logo" />
     </a>
     <div class="nav-buttons">
-      <a href="login.html"><img src="assets/signin-button.png" alt="Sign In" class="nav-icon"></a>
+      <a href="/login.html" class="login-link nav-icon">
+        <img src="/assets/signin-button.png" alt="Sign In" />
+      </a>
+    </div>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero">
-    <img src="assets/GIRO D'EUROPA LOGO BLANK.png" alt="Logo" class="main-logo">
+    <img src="/assets/GIRO24.png" alt="Logo" class="main-logo" />
     <p class="tagline">Follow the adventure on Instagram</p>
   </section>
 
   <!-- Main Buttons Grid -->
   <section class="button-grid">
-    <a href="Archive.html" class="grid-button">
+    <a href="/Archive.html" class="grid-button">
       <div class="image-wrapper">
-        <img src="assets/archive-preview.jpg" alt="Photo Archive">
+        <img src="/assets/archive-preview.jpg" alt="Photo Archive" />
         <div class="placeholder"></div>
       </div>
       <h3>Photo Archive</h3>
     </a>
-    <a href="shop.html" class="grid-button">
+    <a href="/shop.html" class="grid-button">
       <div class="image-wrapper">
-        <img src="assets/shop-preview.jpg" alt="Shop">
+        <img src="/assets/shop-preview.jpg" alt="Shop" />
         <div class="placeholder"></div>
       </div>
       <h3>Shop</h3>
     </a>
-    <a href="member.html" class="grid-button">
+    <a href="/member.html" class="grid-button member-link">
       <div class="image-wrapper">
-        <img src="assets/member-preview.jpg" alt="Member Area">
+        <img src="/assets/member-preview.jpg" alt="Member Area" />
         <div class="placeholder"></div>
       </div>
       <h3>Member Area</h3>
@@ -70,6 +107,8 @@
   </section>
 
   <!-- Footer -->
-  <footer><p>&copy; 2025 Giro di Europa. All rights reserved.</p></footer>
+  <footer>
+    <p>&copy; 2025 Giro di Europa. All rights reserved.</p>
+  </footer>
 </body>
 </html>

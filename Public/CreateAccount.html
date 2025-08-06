@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create Account - Giro di Europa</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <style>
     body {
       margin: 0;
@@ -78,6 +78,14 @@
       color: #ccc;
     }
 
+    .file-label {
+      font-size: 0.9rem;
+      color: #ccc;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
     button {
       background-color: #1e90ff;
       color: white;
@@ -113,31 +121,30 @@
       background: rgba(0, 0, 0, 0.8);
     }
   </style>
+  
 </head>
 <body>
-
   <nav id="navbar">
-    <a href="index.html">
-      <img src="images/home-button.png" alt="Home" class="nav-icon">
+    <a href="/index.html">
+      <img src="/assets/home-button.png" alt="Home" class="nav-icon" />
     </a>
   </nav>
 
   <div class="account-wrapper">
     <section class="account-box">
       <h2>Create an Account</h2>
-<form action="/auth/signup"
-      method="POST"
-      enctype="multipart/form-data">
-  <input name="username"        type="text"     placeholder="Username"        required />
-  <input name="email"           type="email"    placeholder="Email"           required />
-  <input name="password"        type="password" placeholder="Password"        required />
-  <input name="confirmPassword" type="password" placeholder="Confirm Password" required />
-  <input name="profilePic"      type="file"     accept="image/*" />
-  <button type="submit">Create Account</button>
-</form>
-
+      <form action="/auth/signup" method="POST" enctype="multipart/form-data">
+        <input name="username" type="text" placeholder="Username" required />
+        <input name="email" type="email" placeholder="Email" required />
+        <input name="password" type="password" placeholder="Password (min 8 chars)" minlength="8" required />
+        <input name="confirmPassword" type="password" placeholder="Confirm Password" minlength="8" required />
+        <label class="file-label">Profile Picture (optional)
+          <input name="profilePic" type="file" accept="image/*" />
+        </label>
+        <button type="submit">Create Account</button>
+      </form>
       <div class="account-footer">
-        <p>Already have an account? <a href="login.html">Log in</a></p>
+        <p>Already have an account? <a href="/login.html">Log in</a></p>
       </div>
     </section>
   </div>
@@ -145,6 +152,6 @@
   <footer>
     <p>&copy; 2025 Giro di Europa. All rights reserved.</p>
   </footer>
-
+  <script src="/script.js"></script>
 </body>
 </html>

@@ -4,13 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Archives - Giro di Europa</title>
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css" />
+  <!-- Lightbox CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js" defer></script>
-  <script src="script.js" defer></script>
   <style>
+    /* Logo sizing rules */
+    .nav-logo {
+      max-height: 60px;
+      width: auto;
+    }
+    .loader-logo {
+      max-width: 150px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .home-button {
+      max-width: 150px;
+      height: auto;
+    }
+    .nav-buttons img,
+    .nav-icon img {
+      max-height: 40px;
+      width: auto;
+    }
+    /* Collage grid styling */
     .collage-grid {
       column-count: 3;
       column-gap: 1rem;
@@ -47,28 +66,30 @@
       text-align: center;
       padding: 1rem;
     }
-    .home-button {
-      max-width: 150px;
-      height: auto;
-    }
   </style>
 </head>
 <body>
   <div id="preloader">
-    <img src="images/logo.png" alt="Loading..." class="loader-logo">
+    <img src="images/GIRO24.png" alt="Loading..." class="loader-logo">
   </div>
 
-  <header>
-    <a href="index.html">
-      <img src="images/home-button.png" alt="Return Home" class="home-button" />
+  <!-- Navigation Bar -->
+  <nav id="navbar">
+    <a href="/index.html">
+      <img src="/assets/GIRO24.png" alt="Logo" class="nav-logo" />
     </a>
-  </header>
+    <div class="nav-buttons">
+      <a href="/login.html" class="login-link nav-icon">
+        <img src="/assets/signin-button.png" alt="Sign In" />
+      </a>
+    </div>
+  </nav>
 
   <main>
     <section class="photo-collage">
       <h2 style="text-align:center;">The Archives</h2>
       <div class="collage-grid" id="collageGrid">
-        <!-- Images will be loaded dynamically -->
+        <!-- Images loaded dynamically -->
       </div>
     </section>
 
@@ -84,12 +105,15 @@
     <p>&copy; 2025 Giro di Europa. All rights reserved.</p>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js" defer></script>
+  <script src="script.js" defer></script>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const imageFolder = 'images/';
       const collageGrid = document.getElementById('collageGrid');
 
-      // List your image filenames here
       const imageFilenames = [
         '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', 
         '7.jpg', '8.jpg', '9.jpg', '10.jpg'
