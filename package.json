@@ -7,18 +7,14 @@
   "engines": { "node": "20.x" },
   "scripts": {
     "start": "node server.js",
+    "postinstall": "npm rebuild sqlite3 --build-from-source",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Dj130204/giro-di-europa.git"
-  },
+  "repository": { "type": "git", "url": "git+https://github.com/Dj130204/giro-di-europa.git" },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Dj130204/giro-di-europa/issues"
-  },
+  "bugs": { "url": "https://github.com/Dj130204/giro-di-europa/issues" },
   "homepage": "https://github.com/Dj130204/giro-di-europa#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
