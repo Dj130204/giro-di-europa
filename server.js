@@ -24,6 +24,9 @@ fs.mkdirSync(dbDir, { recursive: true });
 const publicDir = join(__dirname, "public");
 fs.mkdirSync(publicDir, { recursive: true });
 
+// 📂 Log static directory for debugging
+console.log("📂 Serving static files from:", publicDir);
+
 // --- DB (for user lookup / CSV export) ---
 const dbPromise = open({
   filename: join(dbDir, "database.sqlite"),
@@ -57,11 +60,11 @@ app.use(
 // --- Parsing ---
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// --- Static files ---
-app.use("/assets", express.static(join(publicDir, "assets")));
-app.use("/images", express.static(join(publicDir, "images")));
-app.use("/uploads", express.static(join(publicDir, "uploads")));
+// --- Serve static files ---
 app.use(express.static(publicDir));
+app.get("/", (req, res) => {
+  res.sendFile(join(publicDir, "index.html"));
+});
 
 // --- Sessions (Render is behind a proxy) ---
 app.set("trust proxy", 1);
@@ -73,7 +76,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: isProd,       // true in production behind HTTPS
+      secure: isProd,
       httpOnly: true,
       sameSite: "lax"
     }
@@ -130,5 +133,5 @@ app.get("/admin/contacts.csv", basicAuth, async (req, res) => {
 const PORT = Number(process.env.PORT) || 3000;
 const HOST = "0.0.0.0";
 http.createServer(app).listen(PORT, HOST, () => {
-  console.log(` Server listening on http://${HOST}:${PORT}`);
+  console.log(`✅ Server listening on http://${HOST}:${PORT}`);
 });
