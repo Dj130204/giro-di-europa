@@ -135,3 +135,7 @@ const HOST = "0.0.0.0";
 http.createServer(app).listen(PORT, HOST, () => {
   console.log(`✅ Server listening on http://${HOST}:${PORT}`);
 });
+import membersRouter from "./routes/members.js";
+app.use(express.static("public"));
+app.use(express.json());
+app.use("/members", membersRouter);
