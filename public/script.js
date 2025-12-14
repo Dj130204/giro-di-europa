@@ -1,5 +1,26 @@
 /* script.js */
 // Sticky nav effect
+import "dotenv/config";
+import express from "express";
+import cookieParser from "cookie-parser";
+
+import shopRoutes from "./routes/shopRoutes.js";
+import shopifyRoutes from "./routes/shopifyRoutes.js";
+
+const app = express();
+
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.static("public"));
+
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
+app.use(shopRoutes);
+app.use("/api/shopify", shopifyRoutes);
+
+app.listen(3000, () => console.log("http://localhost:3000"));
+
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
   if (window.scrollY > 10) {

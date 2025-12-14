@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/css/shop.css" />
+    <title>Product</title>
+  </head>
+  <body data-handle="<%= handle %>">
+    <main class="g-wrap g-product">
+      <a class="g-back" href="/shop">← Back to shop</a>
+
+      <div class="g-product__media">
+        <img data-p-img alt="" />
+      </div>
+
+      <div class="g-product__info">
+        <h1 class="g-h1" data-p-title></h1>
+        <div class="g-price" data-p-price></div>
+
+        <label class="g-label">
+          Variant
+          <select class="g-select" data-p-variant></select>
+        </label>
+
+        <div class="g-actions">
+          <button class="g-btn" data-add>Add to cart</button>
+          <button class="g-btn g-btn--ghost" data-open-cart type="button" onclick="alert('Cart drawer is the next step — say the word and I’ll add it.')">
+            Open cart
+          </button>
+        </div>
+
+        <div class="g-desc" data-p-desc></div>
+      </div>
+    </main>
+
+    <script type="module" src="/js/product.js"></script>
+  </body>
+</html>
